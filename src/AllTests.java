@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertAll;
+
 
 
 @RunWith(Suite.class)
@@ -59,15 +59,15 @@ public class AllTests {
 		}
 		int count = 0;
 		if (unError != null) {
-			System.out.println("Username error");
+			System.out.println("Task #1: Username error");
 			count += 1;
 		} 
 		if (pwError != null) {
-			System.out.println("Password error");
+			System.out.println("Task #1: Password error");
 			count += 1;
 		}
 		if (count == 0) {
-			System.out.println("No errors in valid login test");
+			System.out.println("Task #1: No errors");
 		}
 		assertEquals(unError,null);
 		assertEquals(pwError,null);
@@ -89,9 +89,9 @@ public class AllTests {
 		WebElement unElem = driver.findElement(By.id("email"));
 		String tooltipMsg = unElem.getAttribute("validationMessage");
 		if (tooltipMsg.equals(expectedToolTipMsg)) {
-			System.out.println("Invalid login test - Tool tip verification passed");
+			System.out.println("Task #2: Tool tip verification passed");
 		} else {
-			System.out.println("Invalid login test - Tool tip verification failed");
+			System.out.println("Task #2: Tool tip verification failed");
 		}
 		assertEquals(tooltipMsg,expectedToolTipMsg);
 	}
@@ -123,17 +123,17 @@ public class AllTests {
 		}
 		int count = 0;
 		if (unError == null) {
-			System.out.println("No username error");
+			System.out.println("Task #3: No username error");
 		} else {
 			count += 1;
 		}
 		if (pwError == null) {
-			System.out.println("No password error");
+			System.out.println("Task #3: No password error");
 		} else {
 			count += 1;
 		}
 		if (count == 2) {
-			System.out.println("Errors as expected in empty username and password test");
+			System.out.println("Task #3: Errors are as expected");
 		}
 		assertNotEquals(unError, null);
 		assertNotEquals(pwError, null);
@@ -178,17 +178,17 @@ public class AllTests {
 		driver.findElement(By.id("telephonePortable")).sendKeys(mobilePhone);
 		String city = driver.findElement(By.id("ville")).getAttribute("value");
 		if (city.isEmpty()) {
-			System.out.println("City is empty");
+			System.out.println("Task #4: City is empty");
 		} else {
-			System.out.println("City is:");
-			System.out.println(city);
+			System.out.println("Task #4: City is populated ");
 		}
+		
 		driver.findElement(By.id("BtnCreationSubmit")).click();
 		String newUrl = driver.getCurrentUrl();
 		if (registrationUrl.equals(newUrl)) {
-			System.out.println("After registration - Still on the same page");
+			System.out.println("Task #4: After registration - Still on the same page");
 		} else {
-			System.out.println("Registration - Moved to another page ");
+			System.out.println("Task #4: After registration - Moved to different page ");
 		}
 		assertNotEquals(city,"");
 		assertNotEquals(registrationUrl,newUrl);
